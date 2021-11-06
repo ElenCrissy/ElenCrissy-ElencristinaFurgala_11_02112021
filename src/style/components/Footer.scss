@@ -1,0 +1,19 @@
+@import '../style_utils.scss';
+
+.footer-container{
+  width: 100%;
+  background-color: black;
+}
+
+.footer{
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  text-align: center;
+  color: white;
+  &__logo{
+    width: 120px;
+    margin: auto;
+  }
+}

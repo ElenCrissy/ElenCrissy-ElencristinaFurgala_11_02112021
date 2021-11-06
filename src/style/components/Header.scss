@@ -1,0 +1,21 @@
+@import '../style_utils.scss';
+
+.header-container{
+  width: 85%;
+  margin: auto;
+  margin-bottom: 50px;
+  & .header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+}
+.header-nav{
+  width: 20%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: $color-primary;
+  &__link_accueil {
+  }
+}
