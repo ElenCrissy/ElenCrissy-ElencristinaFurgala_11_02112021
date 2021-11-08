@@ -1,6 +1,6 @@
 import {Component} from "react";
 // import {accommodations} from "../../data.json";
-import Card from "../Card";
+// import Card from "../Card";
 
 class Gallery extends Component{
 
