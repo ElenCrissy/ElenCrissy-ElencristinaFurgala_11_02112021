@@ -13,26 +13,26 @@ class Home extends Component {
 
     componentDidMount() {
         // const url = 'https://s3-eu-west-1.amazonaws.com/course.oc-static.com/projects/Front-End+V2/P9+React+1/logements.json';
-        const url = '/src/pages/Home/data.json'
+        const url = '/data.json'
         fetch(url)
             .then((response) => response.json())
-            // .then((data) => {
-            //     this.setState((currentState) =>{
-            //         return(
-            //             data = currentState.data
-            //         )
-            //     })
-            // })
+            .then((data) => {
+                console.log(data)
+                this.setState({ data })
+            })
             .catch(error => {
                 console.log(`Fetch problem: ${error}`)
             });
     }
 
   render() {
+      const { accommodations } = this.state;
+      console.log('here', this.state)
+
       return(
         <div className="home-container">
             <Banner/>
-            <Gallery />
+            <Gallery accommodations={accommodations}/>
         </div>
     )
   }
