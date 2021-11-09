@@ -28,11 +28,11 @@ class Gallery extends Component{
                 <ul>
                     {accommodations.map((accommodation, index) => (
                         <Card
-                        key={`${accommodation.id}-${index}`}
-                        title={accommodation.title}
-                        picture={accommodation.cover}
+                            key={`${accommodation.id}-${index}`}
+                            title={accommodation.title}
+                            picture={accommodation.cover}
                         />
-                        ))
+                    ))
                     }
                 </ul>
             </section>

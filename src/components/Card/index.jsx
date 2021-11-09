@@ -1,13 +1,14 @@
 import {Component} from "react";
+import '../../style/components/Card.scss';
 
 class Card extends Component{
     render() {
         console.log(this.props.title)
         return(
-            <div className="card">
-                <img src={this.props.picture} className="card__img" alt="card-img"/>
+            <li className="card">
+                <img src={this.props.picture} className="card__img linear-gradient" alt="card-img"/>
                 <p>{this.props.title}</p>
-            </div>
+            </li>
 
         )
     }

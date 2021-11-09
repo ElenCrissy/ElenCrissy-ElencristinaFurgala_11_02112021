@@ -1,0 +1,25 @@
+@import "../style_utils.scss";
+.card{
+  width: 28%;
+  border-radius: $border-radius-standard;
+  margin-bottom: 30px;
+  & img{
+    width: 100%;
+    height: 100%;
+    border-radius: $border-radius-standard;
+    object-fit: cover;
+    index: 1;
+    &.linear-gradient {
+      index:999;
+      background: linear-gradient(to bottom right, blue, white);
+    }
+  }
+  & p{
+    width: 90%;
+    color: white;
+    position: relative;
+    bottom: 60px;
+    left: 15px;
+    margin: 0;
+  }
+}

@@ -1,6 +1,7 @@
 import {Component} from "react";
 import Banner from "../../components/Banner";
 import Gallery from "../../components/Gallery";
+import '../../style/layout/Home.scss';
 
 class Home extends Component {
     // constructor(props) {
