@@ -5,12 +5,19 @@ import reportWebVitals from './reportWebVitals';
 import Header from "./components/Header";
 import Home from "./pages/Home";
 import Footer from "./components/Footer";
+import About from "./pages/About";
+import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 
 ReactDOM.render(
   <React.StrictMode>
-      <Header />
-      <Home />
-      <Footer/>
+      <Router>
+          <Header/>
+          <Routes path="/">
+              <Route index element={<Home/>} />
+              <Route path="about" element={<About/>} />
+          </Routes>
+          <Footer/>
+      </Router>
 
   </React.StrictMode>,
   document.getElementById('root')
