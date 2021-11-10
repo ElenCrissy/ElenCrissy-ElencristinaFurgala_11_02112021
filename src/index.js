@@ -8,7 +8,7 @@ import Footer from "./components/Footer";
 import About from "./pages/Error";
 import Accommodation from "./pages/Accommodation";
 import Error from "./pages/Error";
-import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 
 
 
@@ -16,12 +16,12 @@ ReactDOM.render(
   <React.StrictMode>
       <Router>
           <Header/>
-          <Routes path="/">
-              <Route index element={<Home/>} />
-              <Route path="/about" element={<About/>} />
-              <Route path="/test/:id" element={<Accommodation/>}/>
-              <Route path="*" element={<Error/>}/>
-          </Routes>
+          <Switch>
+              <Route exact path="/" component={Home} />
+              <Route path="/about" component={About} />
+              <Route path="/:id" component={Accommodation}/>
+              <Route path="*" component={Error}/>
+          </Switch>
           <Footer/>
       </Router>
 
