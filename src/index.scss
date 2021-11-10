@@ -1,4 +1,5 @@
 @import '../src/style/style_utils.scss';
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap');
 
 body {
   margin: 0;
@@ -21,9 +22,10 @@ code {
 .root{
   width: 100%;
   margin-top: 50px;
+  font-family: 'Montserrat', sans-serif;
 }
 
 a{
   text-decoration: none;
-  color: black;
+  color: $color-primary;
 }

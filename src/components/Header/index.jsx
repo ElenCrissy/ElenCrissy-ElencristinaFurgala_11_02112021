@@ -12,7 +12,7 @@ class Header extends Component {
                     <img src={logo} className="header-logo" alt="logo" />
                     <nav className="header-nav">
                         <Link to="/" className="nav__link_accueil">Accueil</Link>
-                        <Link to="about"  className="nav__link_apropos">A propos</Link>
+                        <Link to="/about" className="nav__link_apropos">A propos</Link>
                     </nav>
                 </header>
             </div>

@@ -1,6 +1,7 @@
 import {Component} from "react";
 import Card from "../Card";
 
+
 class Gallery extends Component{
     constructor(props) {
         super(props)
@@ -29,6 +30,7 @@ class Gallery extends Component{
                     {accommodations.map((accommodation, index) => (
                         <Card
                             key={`${accommodation.id}-${index}`}
+                            id={accommodation.id}
                             title={accommodation.title}
                             picture={accommodation.cover}
                         />

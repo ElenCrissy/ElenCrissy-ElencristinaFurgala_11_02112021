@@ -1,0 +1,18 @@
+@import '../style_utils';
+
+.error{
+  text-align: center;
+  padding: 10%;
+  &__number{
+    font-weight: bold;
+    font-size: 250px;
+    margin: auto
+  }
+  &__message{
+    font-size: 30px;
+  }
+  &__backHome{
+    font-size: 18px;
+    text-decoration: underline;
+  }
+}
