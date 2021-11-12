@@ -2,7 +2,7 @@ import {Component} from "react";
 import Card from "../Card";
 
 
-class Gallery extends Component{
+class CardList extends Component{
     constructor(props) {
         super(props)
         this.state = {
@@ -25,14 +25,14 @@ class Gallery extends Component{
     render(){
         const {accommodations} = this.state;
         return(
-            <section className="gallery">
+            <section className="card-list">
                 <ul>
                     {accommodations.map((accommodation, index) => (
                         <Card
                             key={`${accommodation.id}-${index}`}
                             id={accommodation.id}
                             title={accommodation.title}
-                            picture={accommodation.cover}
+                            cover={accommodation.cover}
                         />
                     ))
                     }
@@ -42,4 +42,4 @@ class Gallery extends Component{
     }
 }
 
-export default Gallery;
+export default CardList;

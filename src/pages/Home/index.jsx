@@ -1,6 +1,6 @@
 import {Component} from "react";
 import Banner from "../../components/Banner";
-import Gallery from "../../components/Gallery";
+import Gallery from "../../components/CardList";
 import '../../style/layout/Home.scss';
 
 class Home extends Component {
@@ -29,7 +29,7 @@ class Home extends Component {
       return(
         <div className="home-container">
             <Banner/>
-            {/*<Gallery accommodations={accommodations}/>*/}
+            {/*<CardList accommodations={accommodations}/>*/}
             <Gallery />
         </div>
     )
