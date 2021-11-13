@@ -16,41 +16,53 @@ class Accommodation extends Component{
             .then((response) => response.json())
             .then((data) => {
                 this.setState({ accommodations : data })
-                console.log(this.state)
             })
             .catch(error => {
                 console.log(`Fetch problem: ${error}`)
             });
     }
 
-    componentDidUpdate(prevProps) {
-        // Utilisation classique (pensez bien à comparer les props) :
-        if (this.props.id !== prevProps.id) {
-            this.fetchData(this.props.id);
-        }
+    componentWillMount() {
+        this.fetchData()
     }
 
-    getAccommodationFromId(id) {
+    // componentDidMount() {
+    //     this.fetchData()
+    //     const { id } = this.props.match.params;
+    //     const { accommodations } = this.state;
+    //     console.log(accommodations)
+    //
+    //     const relevantAccommodation = this.getAccommodationFromId(id, accommodations);
+    //     // console.log(relevantAccommodation.id)
+    // }
 
-        // const relevantAccommodation = accommodations.find(accommodation => {
-        //     const accommodationIdString = accommodation.id.toString();
-        //     console.log("here2",accommodationIdString)
-        //     return accommodationIdString === id;
-        // });
-        // return relevantAccommodation
+    getAccommodationFromId(id, accommodations) {
+        const relevantAccommodation = accommodations.find(accommodation => {
+            const accommodationId = accommodation.id;
+            return accommodationId === id;
+        });
+        return relevantAccommodation
     }
+
+
 
     render() {
-        // const { id } = this.props.match.params;
+        const { id } = this.props.match.params;
+        const { accommodations } = this.state;
+        console.log(accommodations)
+
+        const relevantAccommodation = this.getAccommodationFromId(id, accommodations);
+        console.log(relevantAccommodation)
+
 
         return(
             <section className="accommodation">
                 {/*<Gallery/>*/}
-                <div className="title"></div>
-                <div className="location"></div>
-                <div className="owner"></div>
-                //map for tags
-                <div className="stars"></div>
+                {/*<div className="title">{relevantAccommodation.title}</div>*/}
+                {/*<div className="location">{relevantAccommodation.location}</div>*/}
+                {/*<div className="owner">{relevantAccommodation.host.name}</div>*/}
+                {/*//map for tags*/}
+                {/*<div className="rating">{relevantAccommodation.rating}</div>*/}
                 {/*<DetailBlock/>*/}
             </section>
         )
