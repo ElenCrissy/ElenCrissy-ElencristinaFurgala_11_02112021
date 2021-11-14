@@ -22,59 +22,65 @@ class Accommodation extends Component{
             });
     }
 
-    // componentWillMount() {
-    //     this.fetchData()
-    // }
-
     componentDidMount() {
         this.fetchData()
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
+        // console.log((this.state))
+        // if (this.state !== prevState){
+        //     this.fetchData()
+        //     const { id } = this.props.match.params;
+        //     const accommodation = this.setState({accommodations : this.getAccommodationFromId(id, this.state)});
+        //     return accommodation
+        // }
         const { id } = this.props.match.params;
-        const { accommodations } = this.state;
-        console.log(accommodations)
-
-        const relevantAccommodation = this.getAccommodationFromId(id, accommodations);
-        console.log(relevantAccommodation)
-        if (prevState.data !== this.state.data) {
-            this.setState({accommodations : relevantAccommodation})
-            console.log('hello')
+        if (this.state.accommodations.length > 1) {
+            const relevantAccommodation = this.getAccommodationFromId(id, this.state);
+            return this.setState({accommodations : relevantAccommodation})
         }
     }
 
-    getAccommodationFromId(id, accommodations) {
+    // componentWillUpdate(nextProps, nextState, nextContext) {
+    //     const { id } = this.props.match.params;
+    //     if(this.state.accommodations.length > 1){
+    //         return this.setState({accommodations : this.getAccommodationFromId(id, this.state)})
+    //     }
+    // }
+
+    getAccommodationFromId(id, acc) {
+        const { accommodations } = acc;
         const relevantAccommodation = accommodations.find(accommodation => {
             const accommodationId = accommodation.id;
             return accommodationId === id;
         });
-
         return relevantAccommodation
     }
 
 
     render() {
+        const { accommodations } = this.state;
+        console.log(accommodations)
+        const host = accommodations.host
+        // console.log(host)
+        if(host !== undefined){
+            console.log(host.name)
+        }
 
-        // const { id } = this.props.match.params;
-        // const { accommodations } = this.state;
-        // console.log(accommodations)
-        //
-        // const relevantAccommodation = this.getAccommodationFromId(id, accommodations);
-        // console.log(relevantAccommodation.title)
+            return(
+                <section className="accommodation">
+                    {/*<Gallery/>*/}
+                    <div className="title">{accommodations.title}</div>
+                    <div className="location">{accommodations.location}</div>
+                    <div className="owner"></div>
+                    {host.name ? {accommodations.host.name}}
+                    {/*//map for tags*/}
+                    <div className="rating">{accommodations.rating}</div>
+                    {/*<DetailBlock/>*/}
+                </section>
+            )
 
-
-        return(
-            <section className="accommodation">
-                {/*<Gallery/>*/}
-                {/*<div className="title">{relevantAccommodation.title}</div>*/}
-                {/*<div className="location">{relevantAccommodation.location}</div>*/}
-                {/*<div className="owner">{relevantAccommodation.host.name}</div>*/}
-                {/*//map for tags*/}
-                {/*<div className="rating">{relevantAccommodation.rating}</div>*/}
-                {/*<DetailBlock/>*/}
-            </section>
-        )
-}
+    }
 }
 
 export default withRouter(Accommodation);
