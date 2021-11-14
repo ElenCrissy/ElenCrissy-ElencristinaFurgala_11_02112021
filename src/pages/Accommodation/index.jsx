@@ -22,37 +22,45 @@ class Accommodation extends Component{
             });
     }
 
-    componentWillMount() {
+    // componentWillMount() {
+    //     this.fetchData()
+    // }
+
+    componentDidMount() {
         this.fetchData()
     }
 
-    // componentDidMount() {
-    //     this.fetchData()
-    //     const { id } = this.props.match.params;
-    //     const { accommodations } = this.state;
-    //     console.log(accommodations)
-    //
-    //     const relevantAccommodation = this.getAccommodationFromId(id, accommodations);
-    //     // console.log(relevantAccommodation.id)
-    // }
-
-    getAccommodationFromId(id, accommodations) {
-        const relevantAccommodation = accommodations.find(accommodation => {
-            const accommodationId = accommodation.id;
-            return accommodationId === id;
-        });
-        return relevantAccommodation
-    }
-
-
-
-    render() {
+    componentDidUpdate(prevProps, prevState, snapshot) {
         const { id } = this.props.match.params;
         const { accommodations } = this.state;
         console.log(accommodations)
 
         const relevantAccommodation = this.getAccommodationFromId(id, accommodations);
         console.log(relevantAccommodation)
+        if (prevState.data !== this.state.data) {
+            this.setState({accommodations : relevantAccommodation})
+            console.log('hello')
+        }
+    }
+
+    getAccommodationFromId(id, accommodations) {
+        const relevantAccommodation = accommodations.find(accommodation => {
+            const accommodationId = accommodation.id;
+            return accommodationId === id;
+        });
+
+        return relevantAccommodation
+    }
+
+
+    render() {
+
+        // const { id } = this.props.match.params;
+        // const { accommodations } = this.state;
+        // console.log(accommodations)
+        //
+        // const relevantAccommodation = this.getAccommodationFromId(id, accommodations);
+        // console.log(relevantAccommodation.title)
 
 
         return(
