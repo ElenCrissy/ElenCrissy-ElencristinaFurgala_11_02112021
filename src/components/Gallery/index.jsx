@@ -1,5 +1,4 @@
 import {Component} from "react";
-import Card from "../Card";
 
 class Gallery extends Component{
     constructor(props) {
@@ -13,10 +12,14 @@ class Gallery extends Component{
         return (
             <div className="gallery">
                 <ul>
-                    {/*{pictures.map((picture, index) => (*/}
-                    {/*    <img src={picture} alt="picture"/>*/}
-                    {/*))*/}
-                    {/*}*/}
+                    {pictures.map((picture, index) => (
+                        <img
+                            src={picture}
+                            alt="picture"
+                            key={`${picture.id}-${index}`}
+                        />
+                    ))
+                    }
                 </ul>
             </div>
         )

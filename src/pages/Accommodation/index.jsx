@@ -1,7 +1,7 @@
 import {Component} from "react";
 import { withRouter } from 'react-router-dom';
 import Gallery from "../../components/Gallery";
-// import DetailBlock from "../../components/DetailBlock";
+import DetailBlock from "../../components/DetailBlock";
 
 class Accommodation extends Component{
     constructor(props) {
@@ -9,7 +9,7 @@ class Accommodation extends Component{
         this.state = {
             accommodations : [],
         }
-        this.getAccommodationFromId = this.getAccommodationFromId.bind(this);
+        // this.getAccommodationFromId = this.getAccommodationFromId.bind(this);
     }
 
     fetchData() {
@@ -24,31 +24,17 @@ class Accommodation extends Component{
             });
     }
 
-    componentDidMount() {
+    componentDidMount = () => {
         this.fetchData()
     }
 
-    componentDidUpdate(prevProps, prevState, snapshot) {
-        // console.log((this.state))
-        // if (this.state !== prevState){
-        //     this.fetchData()
-        //     const { id } = this.props.match.params;
-        //     const accommodation = this.setState({accommodations : this.getAccommodationFromId(id, this.state)});
-        //     return accommodation
-        // }
+    componentDidUpdate = (prevProps, prevState, snapshot) => {
         const { id } = this.props.match.params;
         if (this.state.accommodations.length > 1) {
             const relevantAccommodation = this.getAccommodationFromId(id, this.state);
             return this.setState({accommodations : relevantAccommodation})
         }
     }
-
-    // componentWillUpdate(nextProps, nextState, nextContext) {
-    //     const { id } = this.props.match.params;
-    //     if(this.state.accommodations.length > 1){
-    //         return this.setState({accommodations : this.getAccommodationFromId(id, this.state)})
-    //     }
-    // }
 
     getAccommodationFromId = (id, acc) => {
         const { accommodations } = acc;
@@ -62,10 +48,11 @@ class Accommodation extends Component{
 
     render() {
         const { accommodations } = this.state;
-        // const host = accommodations.host
+        // const host = accommodations.host.name
         // if(host !== undefined){
         //     console.log(host.name)
         // }
+        console.log(accommodations)
 
         if(accommodations != undefined){
             return(
@@ -76,7 +63,10 @@ class Accommodation extends Component{
                     {/*{host.name ? <div className="owner">{host.name}</div> : null}*/}
                     {/*//map for tags*/}
                     <div className="rating">{accommodations.rating}</div>
-                    {/*<DetailBlock/>*/}
+                    <DetailBlock
+                        description={accommodations.description}
+                        equipments={accommodations.equipments}
+                    />
                 </section>
             )
         }
