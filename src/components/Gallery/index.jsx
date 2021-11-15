@@ -1,25 +1,27 @@
 import {Component} from "react";
 
 class Gallery extends Component{
-    constructor(props) {
-        super(props);
-
-    }
 
     render(){
         const pictures = this.props.pictures
         console.log(pictures)
+        let test;
+        if(pictures) {
+            return (
+                test = pictures.map((picture, index) => (
+                    <img
+                        src={picture}
+                        alt=""
+                        key={`${picture.value}-${index}`}
+                    />
+                ))
+        )
+        }
+
         return (
             <div className="gallery">
                 <ul>
-                    {pictures.map((picture, index) => (
-                        <img
-                            src={picture}
-                            alt="picture"
-                            key={`${picture.id}-${index}`}
-                        />
-                    ))
-                    }
+                    {test}
                 </ul>
             </div>
         )
