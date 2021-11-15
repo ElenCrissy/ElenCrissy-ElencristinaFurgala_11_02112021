@@ -1,5 +1,6 @@
 import {Component} from "react";
 import { withRouter } from 'react-router-dom';
+import Gallery from "../../components/Gallery";
 // import DetailBlock from "../../components/DetailBlock";
 
 class Accommodation extends Component{
@@ -8,6 +9,7 @@ class Accommodation extends Component{
         this.state = {
             accommodations : [],
         }
+        this.getAccommodationFromId = this.getAccommodationFromId.bind(this);
     }
 
     fetchData() {
@@ -48,7 +50,7 @@ class Accommodation extends Component{
     //     }
     // }
 
-    getAccommodationFromId(id, acc) {
+    getAccommodationFromId = (id, acc) => {
         const { accommodations } = acc;
         const relevantAccommodation = accommodations.find(accommodation => {
             const accommodationId = accommodation.id;
@@ -60,26 +62,24 @@ class Accommodation extends Component{
 
     render() {
         const { accommodations } = this.state;
-        console.log(accommodations)
-        const host = accommodations.host
-        // console.log(host)
-        if(host !== undefined){
-            console.log(host.name)
-        }
+        // const host = accommodations.host
+        // if(host !== undefined){
+        //     console.log(host.name)
+        // }
 
+        if(accommodations != undefined){
             return(
                 <section className="accommodation">
-                    {/*<Gallery/>*/}
+                    <Gallery pictures={accommodations.pictures}/>
                     <div className="title">{accommodations.title}</div>
                     <div className="location">{accommodations.location}</div>
-                    <div className="owner"></div>
-                    {host.name ? {accommodations.host.name}}
+                    {/*{host.name ? <div className="owner">{host.name}</div> : null}*/}
                     {/*//map for tags*/}
                     <div className="rating">{accommodations.rating}</div>
                     {/*<DetailBlock/>*/}
                 </section>
             )
-
+        }
     }
 }
 
