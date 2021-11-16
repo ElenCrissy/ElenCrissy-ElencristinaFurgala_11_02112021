@@ -1,6 +1,7 @@
 import {Component} from "react";
 import {withRouter} from 'react-router-dom';
 import Gallery from "../../components/Gallery";
+import Tag from "../../components/Tag"
 import DetailBlock from "../../components/DetailBlock";
 import "../../style/layout/accommodation.scss";
 
@@ -30,21 +31,6 @@ class Accommodation extends Component{
         this.fetchData(id)
     }
 
-    // componentDidUpdate(prevProps, prevState, snapshot) {
-    //     if(prevState === []) {
-    //         const relevantAccommodation = this.getAccommodationFromId(this.id, this.state);
-    //         return this.setState({accommodations : relevantAccommodation})
-    //     }
-    // }
-
-    // componentDidUpdate(prevProps, prevState, snapshot) {
-    //     // const { id } = this.props.match.params;
-    //     if (this.state.accommodations.length > 1) {
-    //         const relevantAccommodation = this.getAccommodationFromId(this.id, this.state);
-    //         return this.setState({accommodations : relevantAccommodation})
-    //     }
-    // }
-
     getAccommodationFromId = (id, accommodations) => {
         return accommodations.find(accommodation => {
             const accommodationId = accommodation.id;
@@ -52,22 +38,30 @@ class Accommodation extends Component{
         })
     }
 
+    getTags = (tagList, accommodation) => {
+        let trucs
+        console.log(tagList)
+        if(tagList) {
+            const tags = accommodation.tags
+            trucs =  tags.map((tag, index) => (
+                <Tag tag={tag} key={`${index}`}/>
+            ))
+            return trucs
+        }
+    }
+
     render() {
         const { accommodations } = this.state;
-        console.log(accommodations.pictures)
+        console.log(accommodations)
+        const tags = this.getTags(accommodations.tags, accommodations)
 
-        const tags = accommodations.tags
-        return(
+        return (
             <section className="accommodation">
                 <Gallery pictures={accommodations.pictures}/>
                 <h1 className="title">{accommodations.title}</h1>
                 <div className="location">{accommodations.location}</div>
                 {/*{host.name ? <div className="owner">{host.name}</div> : null}*/}
-                {/*//map for tags*/}
-                {tags.map((tag, index) => (
-                    <Tag tag={tag.value} key={`${index}`}/>
-                ))}
-
+                {tags}
                 <div className="rating">{accommodations.rating}</div>
                 <DetailBlock
                     description={accommodations.description}

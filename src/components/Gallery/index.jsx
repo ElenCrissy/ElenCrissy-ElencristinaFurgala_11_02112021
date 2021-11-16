@@ -33,7 +33,6 @@ class Gallery extends Component{
         const pictures = this.props.pictures
         // const { currentPicture } = this.state
         const list = this.createPicturesDOM(pictures)
-        console.log(list)
 
         return (
             <div className="gallery">
