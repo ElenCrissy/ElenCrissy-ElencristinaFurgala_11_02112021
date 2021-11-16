@@ -63,10 +63,10 @@ class Accommodation extends Component{
                 {/*{host.name ? <div className="owner">{host.name}</div> : null}*/}
                 <div className="tag-list">{tags}</div>
                 <div className="rating">{accommodations.rating}</div>
-                <DetailBlock
-                    description={accommodations.description}
-                    equipments={accommodations.equipments}
-                />
+                {/*<DetailBlock*/}
+                {/*    description={accommodations.description}*/}
+                {/*    equipments={accommodations.equipments}*/}
+                {/*/>*/}
             </section>
         )
 

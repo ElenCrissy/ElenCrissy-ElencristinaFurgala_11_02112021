@@ -6,16 +6,17 @@ class DetailBlock extends Component{
         super(props);
     }
 
-    firstLetterToUpperCase = (string) => {
-        string = string[0].toUpperCase() + string.slice(1);
-        return string
-    }
+    // firstLetterToUpperCase = (string) => {
+    //     string = string[0].toUpperCase() + string.slice(1);
+    //     return string
+    // }
 
     render() {
-        const blockNameUpperCased = this.firstLetterToUpperCase(this.props.blockName)
+        console.log(this.props.blockName)
+        // const blockNameUpperCased = this.firstLetterToUpperCase(this.props.blockName)
         return(
             <section className="detail-block">
-                <div className="block-name">{blockNameUpperCased}</div>
+                <div className="block-name">{this.props.blockName}</div>
                 <div className="block-string">{this.props.blockString}</div>
             </section>
         )

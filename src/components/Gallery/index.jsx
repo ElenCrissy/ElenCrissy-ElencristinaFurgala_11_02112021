@@ -22,24 +22,24 @@ class Gallery extends Component{
                 />
             ));
             // list[0].classList.add("active")
-            console.log(list[0])
+            // console.log(list[0])
             return list
         }
     }
 
-    previous = (pictures) => {
-
-    }
-
-    next = (pictures) => {
-
-    }
+    // previous = (pictures) => {
+    //
+    // }
+    //
+    // next = (pictures) => {
+    //
+    // }
 
 
     render(){
         const pictures = this.props.pictures
         const list = this.createPicturesDOM(pictures)
-        console.log(this.state.currentPicture)
+        // console.log(this.state.currentPicture)
 
 
         return (
