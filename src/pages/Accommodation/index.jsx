@@ -2,6 +2,7 @@ import {Component} from "react";
 import {withRouter} from 'react-router-dom';
 import Gallery from "../../components/Gallery";
 import DetailBlock from "../../components/DetailBlock";
+import "../../style/layout/accommodation.scss";
 
 class Accommodation extends Component{
     constructor(props) {
@@ -54,13 +55,19 @@ class Accommodation extends Component{
     render() {
         const { accommodations } = this.state;
         console.log(accommodations.pictures)
+
+        const tags = accommodations.tags
         return(
             <section className="accommodation">
                 <Gallery pictures={accommodations.pictures}/>
-                <div className="title">{accommodations.title}</div>
+                <h1 className="title">{accommodations.title}</h1>
                 <div className="location">{accommodations.location}</div>
                 {/*{host.name ? <div className="owner">{host.name}</div> : null}*/}
                 {/*//map for tags*/}
+                {tags.map((tag, index) => (
+                    <Tag tag={tag.value} key={`${index}`}/>
+                ))}
+
                 <div className="rating">{accommodations.rating}</div>
                 <DetailBlock
                     description={accommodations.description}

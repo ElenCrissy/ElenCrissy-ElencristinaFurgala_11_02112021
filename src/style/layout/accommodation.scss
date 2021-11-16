@@ -1,0 +1,12 @@
+@import "../style_utils.scss";
+
+.accommodation{
+  width: 85%;
+  margin: auto;
+  & .title{
+    font-size: 36px;
+    font-family: 'Montserrat';
+    font-weight: normal;
+    margin-bottom: 0;
+  }
+}
