@@ -9,4 +9,9 @@
     font-weight: normal;
     margin-bottom: 0;
   }
+  & .tag-list{
+    display: flex;
+    flex-direction: row;
+    margin-top: 15px;
+  }
 }

@@ -1,21 +1,23 @@
 import {Component} from "react";
+import "../../style/components/DetailBlock.scss";
 
 class DetailBlock extends Component{
     constructor(props) {
         super(props);
-        this.state = {
-            details : [],
-        }
     }
-    render() {
-        const title = this.state.details.title;
-        const text = this.state.details.text;
 
+    firstLetterToUpperCase = (string) => {
+        string = string[0].toUpperCase() + string.slice(1);
+        return string
+    }
+
+    render() {
+        const blockNameUpperCased = this.firstLetterToUpperCase(this.props.blockName)
         return(
-            <div>
-                <div>{title}</div>
-                <div>{text}</div>
-            </div>
+            <section className="detail-block">
+                <div className="block-name">{blockNameUpperCased}</div>
+                <div className="block-string">{this.props.blockString}</div>
+            </section>
         )
     }
 }

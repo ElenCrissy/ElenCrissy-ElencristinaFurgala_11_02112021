@@ -6,11 +6,9 @@ import next from '../../assets/next.png';
 class Gallery extends Component{
     constructor(props) {
         super(props);
-        if(this.props.pictures) {
-            this.state = {
-                currentPicture : this.props.pictures[0]
-            }
-        }
+        // this.state = {
+        //     currentPicture :
+        // }
     }
 
     createPicturesDOM = (pictures) => {
@@ -23,24 +21,44 @@ class Gallery extends Component{
                     key={`${index}`}
                 />
             ));
+            // list[0].classList.add("active")
+            console.log(list[0])
             return list
         }
     }
 
-    createArrow
+    previous = (pictures) => {
+
+    }
+
+    next = (pictures) => {
+
+    }
+
 
     render(){
         const pictures = this.props.pictures
-        // const { currentPicture } = this.state
         const list = this.createPicturesDOM(pictures)
+        console.log(this.state.currentPicture)
+
 
         return (
             <div className="gallery">
-                <img src={previous} alt="" className={"nav-previous"}/>
+                <img
+                    src={previous}
+                    alt=""
+                    className={"nav-previous"}
+                    onClick={(e) => {this.previous(pictures)}}
+                />
                 <ul>
                     {list}
                 </ul>
-                <img src={next} alt="" className={"nav-next"}/>
+                <img
+                    src={next}
+                    alt=""
+                    className={"nav-next"}
+                    onClick={(e) => {this.next(pictures)}}
+                />
             </div>
         )
     }
