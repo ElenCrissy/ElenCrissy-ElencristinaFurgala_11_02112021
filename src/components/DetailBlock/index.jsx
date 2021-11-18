@@ -2,9 +2,6 @@ import {Component} from "react";
 import "../../style/components/DetailBlock.scss";
 
 class DetailBlock extends Component{
-    constructor(props) {
-        super(props);
-    }
 
     // firstLetterToUpperCase = (string) => {
     //     string = string[0].toUpperCase() + string.slice(1);

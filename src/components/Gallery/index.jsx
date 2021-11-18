@@ -4,12 +4,6 @@ import previous from '../../assets/previous.png';
 import next from '../../assets/next.png';
 
 class Gallery extends Component{
-    constructor(props) {
-        super(props);
-        // this.state = {
-        //     currentPicture :
-        // }
-    }
 
     createPicturesDOM = (pictures) => {
         let list
