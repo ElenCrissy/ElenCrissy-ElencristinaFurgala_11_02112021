@@ -39,20 +39,18 @@ class Accommodation extends Component{
     }
 
     getTags = (tagList, accommodation) => {
-        let trucs
-        console.log(tagList)
+        let tagComponents
         if(tagList) {
             const tags = accommodation.tags
-            trucs =  tags.map((tag, index) => (
+            tagComponents =  tags.map((tag, index) => (
                 <Tag tag={tag} key={`${index}`}/>
             ))
-            return trucs
+            return tagComponents
         }
     }
 
     render() {
         const { accommodations } = this.state;
-        console.log(accommodations)
         const tags = this.getTags(accommodations.tags, accommodations)
 
         return (

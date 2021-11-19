@@ -21,40 +21,42 @@ class Gallery extends Component{
         }
     }
 
-    // previous = (pictures) => {
-    //
-    // }
-    //
-    // next = (pictures) => {
-    //
-    // }
+    previous = (pictures) => {
+
+    }
+
+    next = (pictures) => {
+
+    }
 
 
     render(){
-        const pictures = this.props.pictures
-        const list = this.createPicturesDOM(pictures)
-        // console.log(this.state.currentPicture)
+        const picturesArray = this.props.pictures
+        const picturesDOM = this.createPicturesDOM(picturesArray)
 
-
-        return (
-            <div className="gallery">
-                <img
-                    src={previous}
-                    alt=""
-                    className={"nav-previous"}
-                    onClick={(e) => {this.previous(pictures)}}
-                />
-                <ul>
-                    {list}
-                </ul>
-                <img
-                    src={next}
-                    alt=""
-                    className={"nav-next"}
-                    onClick={(e) => {this.next(pictures)}}
-                />
-            </div>
-        )
+        if(picturesDOM){
+            return (
+                <div className="gallery">
+                    <img
+                        src={previous}
+                        alt=""
+                        className={"nav-previous"}
+                        onClick={(e) => {this.previous(picturesDOM)}}
+                    />
+                    <ul>
+                        {picturesDOM}
+                    </ul>
+                    <img
+                        src={next}
+                        alt=""
+                        className={"nav-next"}
+                        onClick={(e) => {this.next(picturesDOM)}}
+                    />
+                </div>
+            )
+        } else {
+            return null
+        }
     }
 }
 
