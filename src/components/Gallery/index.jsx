@@ -8,39 +8,23 @@ class Gallery extends Component{
     constructor(props) {
         super(props);
         this.state = {
-            isCurrentMedia : true
+            img : [0]
         }
-        // this.something = createRef()
+        this.currentImage = createRef()
     }
 
 
-    createPicturesDOM = (pictures) => {
-        let list
-        if(pictures) {
-            list = pictures.map((picture, index) => (
+    createPicturesDOM = (picture, index) => {
+        if(picture) {
+            return (
                 <img
                     src={picture}
                     alt=""
                     key={`${index}`}
-                    className={this.state.isCurrentMedia ? "active" : "hidden"}
-                    // ref={this.something}
                 />
-            ));
-            console.log(list)
-            return list
+            )
         }
     }
-
-    // createPictureDOM = (source) => {
-    //     if(source) {
-    //         return(
-    //             <img
-    //                 src={source}
-    //                 alt=""
-    //             />
-    //         )
-    //     }
-    // }
 
 
     // previous = (pictures) => {
@@ -60,26 +44,24 @@ class Gallery extends Component{
     // }
 
     render(){
-        const picturesArray = this.props.pictures
-        const picturesDOM = this.createPicturesDOM(picturesArray)
-
-
-        if(picturesArray){
-            // const truc = picturesArray.forEach(picture => {
-            //     const pictureDOM = this.createPictureDOM(picture)
-            // })
-
+        const picturesData = this.props.pictures
+        const length = picturesData.length
+        if(picturesData){
             return (
                 <div className="gallery">
+                    <div className="images">
+                        {
+                            picturesData.map((picture, index) => (
+                                this.createPicturesDOM(picture, index)
+                            ))
+                        }
+                    </div>
                     <img
                         src={previous}
                         alt=""
                         className={"nav-previous"}
                         // onClick={(e) => {this.previous(picturesArray, currentMedia)}}
                     />
-                    <div className="images">
-                        {picturesDOM}
-                    </div>
                     <img
                         src={next}
                         alt=""
