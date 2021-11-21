@@ -9,8 +9,9 @@ class Gallery extends Component{
         super(props);
         this.state = {
             img : [0]
-        }
-        this.currentImage = createRef()
+        };
+        this.currentImage = [0];
+        // this.currentImageDOM = createRef()
     }
 
 
@@ -27,21 +28,17 @@ class Gallery extends Component{
     }
 
 
-    // previous = (pictures) => {
-    //
-    // }
-    //
-    // next = (pictures) => {
-    //
-    // }
+    previous = (length) => {
+        if(this.currentImage === length-1) {
+            this.currentImage =- 1
+        }
+    }
 
-    // componentDidMount() {
-    //     const picturesArray = this.props.pictures
-    //     this.setState({currentMedia : picturesArray[0]})
-    //     const currentMedia = this.state.currentMedia
-    //
-    //     console.log(this.state.currentMedia)
-    // }
+    next = (length) => {
+        if(this.currentImage === length-1) {
+            this.currentImage =+ 1
+        }
+    }
 
     render(){
         const picturesData = this.props.pictures
@@ -60,13 +57,13 @@ class Gallery extends Component{
                         src={previous}
                         alt=""
                         className={"nav-previous"}
-                        // onClick={(e) => {this.previous(picturesArray, currentMedia)}}
+                        onClick={(e) => {this.previous(length)}}
                     />
                     <img
                         src={next}
                         alt=""
                         className={"nav-next"}
-                        // onClick={(e) => {this.next(picturesArray, currentMedia)}}
+                        onClick={(e) => {this.next(length)}}
                     />
                 </div>
             )
