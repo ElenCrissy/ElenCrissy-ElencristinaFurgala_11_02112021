@@ -2,7 +2,7 @@ import {Component} from "react";
 import {withRouter} from 'react-router-dom';
 import Gallery from "../../components/Gallery";
 import Tag from "../../components/Tag"
-// import DetailBlock from "../../components/DetailBlock";
+import DetailBlock from "../../components/DetailBlock";
 import "../../style/layout/accommodation.scss";
 
 class Accommodation extends Component{

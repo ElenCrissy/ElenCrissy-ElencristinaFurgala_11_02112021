@@ -3,6 +3,7 @@
 .detail-block{
   width: 80%;
   margin: auto auto 20px auto;
+  position: relative;
   & .block-name{
     border-radius: $border-radius-small;
     padding: 10px;
@@ -12,6 +13,15 @@
   & .block-string{
     padding: 20px;
     background-color: $color-lightgrey;
-    display: none;
+  }
+  & .arrow{
+    width: 21px;
+    height: 12px;
+    position: absolute;
+    top: 13px;
+    right: 20px;
+    &--down{
+    transform: rotate(180deg);
+    }
   }
 }

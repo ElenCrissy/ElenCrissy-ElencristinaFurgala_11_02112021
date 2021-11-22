@@ -1,5 +1,6 @@
-import {Component, createRef} from "react";
+import {Component} from "react";
 import "../../style/components/DetailBlock.scss";
+import arrow from "../../assets/arrow.png";
 
 class DetailBlock extends Component{
     constructor(props) {
@@ -9,33 +10,36 @@ class DetailBlock extends Component{
         }
     }
 
-
     firstLetterToUpperCase = (string) => {
         string = string[0].toUpperCase() + string.slice(1);
         return string
     }
 
-    open() {
+    open = () => {
         this.setState({ isActive: true })
     }
 
-    close(event) {
-        if (!this.modal.contains(event.target)) {
-            this.setState({ isActive: false })
-        }
+    close = () => {
+        this.setState({ isActive: false })
     }
 
     render() {
-        let { detailStatus } = this.state
         const blockNameUpperCased = this.firstLetterToUpperCase(this.props.blockName)
-        return(
+        return (
             <section className="detail-block">
-                <div className="block-name" onClick={ this.open }>{blockNameUpperCased}</div>
-                <div className="block-string">{this.props.blockString}</div>
+                <div className="block-name" onClick={this.state.isActive ? this.close : this.open}>{blockNameUpperCased}</div>
+                {
+                    this.state.isActive ?
+                        <div className="block-string">{this.props.blockString}</div> :
+                        null
+                }
+                {
+                    this.state.isActive ?
+                        <img src={arrow} alt="" className="arrow arrow--up" /> :
+                        <img src={arrow} alt="" className="arrow arrow--down" />
+                }
             </section>
         )
-        console.log(this.truc)
-
     }
 }
 
