@@ -1,7 +1,8 @@
 import {Component} from "react";
 import {withRouter} from 'react-router-dom';
 import Gallery from "../../components/Gallery";
-import Tag from "../../components/Tag"
+import Tag from "../../components/Tag";
+import star from "../../assets/star.png";
 import DetailBlock from "../../components/DetailBlock";
 import "../../style/layout/accommodation.scss";
 
@@ -49,24 +50,68 @@ class Accommodation extends Component{
         }
     }
 
+    getStars = (rating) => {
+        if(rating) {
+            for(let i=0; i < rating; i++){
+                const starNumber = new Array(rating).fill(0);
+                starNumber.map(starNb => (
+                    <img src={star} className="tagsAndRating__rating" alt=""/>
+                ))
+            }
+        }
+    }
+
     render() {
         const { accommodations } = this.state;
-        const tags = this.getTags(accommodations.tags, accommodations)
+        if(this.state){
+            const tags = this.getTags(accommodations.tags, accommodations)
+            const host = accommodations.host
+            const rating = accommodations.rating
 
-        return (
-            <section className="accommodation">
-                <Gallery pictures={accommodations.pictures}/>
-                <h1 className="title">{accommodations.title}</h1>
-                <div className="location">{accommodations.location}</div>
-                {/*{host.name ? <div className="owner">{host.name}</div> : null}*/}
-                <div className="tag-list">{tags}</div>
-                <div className="rating">{accommodations.rating}</div>
-                {/*<DetailBlock*/}
-                {/*    description={accommodations.description}*/}
-                {/*    equipments={accommodations.equipments}*/}
-                {/*/>*/}
-            </section>
-        )
+            return (
+                <section className="accommodation">
+                    <Gallery pictures={accommodations.pictures}/>
+                    <div className="info-accommodation">
+                        <div className="info-details">
+                            <div className="info">
+                                <h1 className="info__title">{accommodations.title}</h1>
+                                <div className="info__location">{accommodations.location}</div>
+                            </div>
+                            {host ?
+                                (<div className="owner">
+                                    <div className="owner__name">{host.name}</div>
+                                    <img className="owner__picture" src={host.picture} alt=""/>
+                                </div>)
+                                : null}
+                        </div>
+
+                        <div className="tagsAndRating">
+                            <div className="tagsAndRating__tags">{tags}</div>
+                            {rating ? this.getStars(rating) : null}
+                        </div>
+                    </div>
+                    <div className="detail-blocks">
+                        {accommodations.description ?
+                            (<DetailBlock
+                                class="accommodation-block"
+                                blockName="description"
+                                blockString={accommodations.description}
+                            />)
+                            : null}
+                        {accommodations.equipments ?
+                            (<DetailBlock
+                                class="accommodation-block"
+                                blockName="equipements"
+                                blockString={accommodations.equipments}
+                            />)
+                            : null}
+                    </div>
+                </section>
+            )
+        } else {
+            return null
+        }
+
 
     }
 }

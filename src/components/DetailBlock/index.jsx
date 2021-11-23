@@ -40,6 +40,7 @@ class DetailBlock extends Component{
                 }
             </section>
         )
+
     }
 }
 

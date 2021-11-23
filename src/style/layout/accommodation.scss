@@ -2,16 +2,68 @@
 
 .accommodation{
   width: 85%;
-  margin: auto;
-  & .title{
+  margin: auto auto 50px auto;
+  & .info-accommodation{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 30px;
+    & .info-details{
+      display: flex;
+      margin-bottom: 20px;
+    }
+  }
+}
+
+.info{
+  width: 80%;
+  &__title{
     font-size: 36px;
     font-family: 'Montserrat';
     font-weight: normal;
     margin-bottom: 0;
   }
-  & .tag-list{
+  &__accommodation{
+
+  }
+}
+
+.owner{
+  width: 30%;
+  display: flex;
+  align-content: center;
+  justify-content: flex-end;
+  &__name{
+    font-size: 18px;
     display: flex;
-    flex-direction: row;
-    margin-top: 15px;
+    align-items: center;
+    text-align: end;
+    width: 100px;
+  }
+  &__picture{
+    width: 100px;
+    height: 100px;
+    padding: 10px 0 10px 10px;
+    border-radius: 50%;
+  }
+}
+
+.tagsAndRating{
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  &__tags{
+    display: flex;
+  }
+  &__rating{
+
+  }
+}
+
+.detail-blocks{
+  display: flex;
+  justify-content: space-between;
+  & .detail-block{
+    width: 48%;
+    margin: 0px;
   }
 }
