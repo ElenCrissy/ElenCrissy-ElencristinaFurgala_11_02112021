@@ -8,7 +8,7 @@ class Gallery extends Component{
         super(props);
         this.state =
             {
-                current : [0]
+                current : 0
             }
     }
 
@@ -28,16 +28,15 @@ class Gallery extends Component{
         if(this.state.current === 0) {
             return this.setState({current : length-1})
         } else {
-            return this.state.current--
+            return this.setState({current : this.state.current-1})
         }
     }
 
     next = (length) => {
         if(this.state.current === length-1) {
-            // this.state.current =+ 1
-            return this.setState({current : [0]})
+            return this.setState({current : 0})
         } else {
-            return this.state.current++
+            return this.setState({current : this.state.current+1})
         }
     }
 
@@ -58,14 +57,14 @@ class Gallery extends Component{
                         src={previous}
                         alt=""
                         className={"nav-previous"}
-                        onClick={(event) => {this.previous(length)}}
+                        onClick={(event) => this.previous(length)}
                     />
-                    {/*<img*/}
-                    {/*    src={next}*/}
-                    {/*    alt=""*/}
-                    {/*    className={"nav-next"}*/}
-                    {/*    onClick={this.next(length)}*/}
-                    {/*/>*/}
+                    <img
+                        src={next}
+                        alt=""
+                        className={"nav-next"}
+                        onClick={(e) => this.next(length)}
+                    />
                 </div>
             )
         } else {
