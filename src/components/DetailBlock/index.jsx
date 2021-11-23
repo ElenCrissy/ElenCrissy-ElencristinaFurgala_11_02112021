@@ -23,21 +23,30 @@ class DetailBlock extends Component{
         this.setState({ isActive: false })
     }
 
+    getEquipments = (equipments) => {
+        let equipmentList = []
+        equipments.map((equipment, index) => {
+            const equipmentDOM = (<div className="equipment" key={index}>{equipment}</div>)
+            equipmentList.push(equipmentDOM)
+        })
+        return equipmentList
+    }
+
     render() {
         const blockNameUpperCased = this.firstLetterToUpperCase(this.props.blockName)
+        const blockContent = this.props.blockContent
+
         return (
             <section className="detail-block">
                 <div className="block-name" onClick={this.state.isActive ? this.close : this.open}>{blockNameUpperCased}</div>
-                {
-                    this.state.isActive ?
-                        <div className="block-string">{this.props.blockString}</div> :
-                        null
-                }
-                {
-                    this.state.isActive ?
+                {this.state.isActive ?
+                        <div className="block-content">
+                            {Array.isArray(blockContent) ? this.getEquipments(blockContent)
+                                : this.props.blockContent}</div>
+                                : null }
+                {this.state.isActive ?
                         <img src={arrow} alt="" className="arrow arrow--up" /> :
-                        <img src={arrow} alt="" className="arrow arrow--down" />
-                }
+                        <img src={arrow} alt="" className="arrow arrow--down" />}
             </section>
         )
 

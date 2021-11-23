@@ -12,7 +12,7 @@ class About extends Component{
             Object.keys(data).map((key, index) => (
             <DetailBlock
                 blockName={key}
-                blockString={data[key]}
+                blockContent={data[key]}
                 key={`${index}`}
             />
             ))

@@ -95,14 +95,14 @@ class Accommodation extends Component{
                             (<DetailBlock
                                 class="accommodation-block"
                                 blockName="description"
-                                blockString={accommodations.description}
+                                blockContent={accommodations.description}
                             />)
                             : null}
                         {accommodations.equipments ?
                             (<DetailBlock
                                 class="accommodation-block"
                                 blockName="equipements"
-                                blockString={accommodations.equipments}
+                                blockContent={accommodations.equipments}
                             />)
                             : null}
                     </div>
