@@ -2,7 +2,7 @@ import {Component} from "react";
 import {withRouter} from 'react-router-dom';
 import Gallery from "../../components/Gallery";
 import Tag from "../../components/Tag";
-import star from "../../assets/star.png";
+import starImage from "../../assets/star.png";
 import DetailBlock from "../../components/DetailBlock";
 import "../../style/layout/accommodation.scss";
 
@@ -50,15 +50,14 @@ class Accommodation extends Component{
         }
     }
 
+    //help
     getStars = (rating) => {
-        if(rating) {
-            for(let i=0; i < rating; i++){
-                const starNumber = new Array(rating).fill(0);
-                starNumber.map(starNb => (
-                    <img src={star} className="tagsAndRating__rating" alt=""/>
-                ))
-            }
-        }
+        let starsArray = [];
+        starsArray.length = rating;
+        console.log(starsArray)
+        return (starsArray.map(index => (
+            <img src={starImage} className="tagsAndRating__rating" alt="" key={index}/>
+        )))
     }
 
     render() {
@@ -87,7 +86,7 @@ class Accommodation extends Component{
 
                         <div className="tagsAndRating">
                             <div className="tagsAndRating__tags">{tags}</div>
-                            {rating ? this.getStars(rating) : null}
+                            <div className="tagsAndRating__rating">{rating ? this.getStars(rating) : null}</div>
                         </div>
                     </div>
                     <div className="detail-blocks">

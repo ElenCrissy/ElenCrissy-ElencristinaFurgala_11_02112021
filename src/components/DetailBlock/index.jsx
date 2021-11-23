@@ -25,7 +25,7 @@ class DetailBlock extends Component{
 
     getEquipments = (equipments) => {
         let equipmentList = []
-        equipments.map((equipment, index) => {
+        equipments.forEach((equipment, index) => {
             const equipmentDOM = (<div className="equipment" key={index}>{equipment}</div>)
             equipmentList.push(equipmentDOM)
         })

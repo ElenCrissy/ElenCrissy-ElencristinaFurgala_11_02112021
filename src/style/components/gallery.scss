@@ -2,13 +2,12 @@
 
 .gallery{
   width: 100%;
-  height: 400px;
+  height: 290px;
   border-radius: $border-radius-standard;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
   overflow: hidden;
   position: relative;
   & .images{
-    height: 100%;
     margin: 0;
     padding: 0;
     display: flex;

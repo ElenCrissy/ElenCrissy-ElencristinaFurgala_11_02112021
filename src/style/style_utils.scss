@@ -6,3 +6,27 @@ $width-standard: 85%;
 
 $border-radius-standard: 25px;
 $border-radius-small: 10px;
+
+$breakpoints:(
+        xsmall: 545px,
+        small: 840px,
+        medium: 1015px,
+);
+
+@mixin xsmall{
+  @media screen and (max-width: map-get($breakpoints, xsmall)){
+    @content;
+  }
+}
+
+@mixin small{
+  @media screen and (max-width: map-get($breakpoints, small)){
+    @content;
+  }
+}
+
+@mixin medium{
+  @media screen and (max-width: map-get($breakpoints, medium)){
+    @content;
+  }
+}

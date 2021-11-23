@@ -8,12 +8,13 @@
     border-radius: $border-radius-standard;
     padding: 20px;
     margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
     & ul{
       padding-inline-start: 0px;
       list-style-type: none;
       display: flex;
       flex-wrap: wrap;
-      justify-content: space-around;
     }
   }
 }

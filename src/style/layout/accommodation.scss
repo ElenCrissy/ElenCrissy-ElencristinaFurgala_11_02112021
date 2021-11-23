@@ -10,6 +10,7 @@
     & .info-details{
       display: flex;
       margin-bottom: 20px;
+      align-items: center;
     }
   }
 }
@@ -20,10 +21,8 @@
     font-size: 36px;
     font-family: 'Montserrat';
     font-weight: normal;
+    margin-top: 0;
     margin-bottom: 0;
-  }
-  &__accommodation{
-
   }
 }
 
@@ -53,9 +52,6 @@
   justify-content: space-between;
   &__tags{
     display: flex;
-  }
-  &__rating{
-
   }
 }
 
