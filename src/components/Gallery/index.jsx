@@ -16,7 +16,7 @@ class Gallery extends Component{
     createPicturesDOM = (picture, index) => {
         if(picture) {
             return (
-                index === this.state.current && (<img src={picture} alt=""/>)
+                index === this.state.current && (<img src={picture} alt="" key={index}/>)
             )
         }
     }

@@ -13,11 +13,10 @@
     & .info-details{
       display: flex;
       margin-bottom: 20px;
-      align-items: center;
+      //position: relative;
       @include xsmall{
         flex-direction: column;
         align-items: normal;
-        position: relative;
       }
     }
   }
@@ -25,6 +24,12 @@
 
 .info{
   width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  @include xsmall{
+    width: 100%;
+  }
   &__title{
     font-size: 36px;
     font-family: 'Montserrat';
@@ -40,36 +45,36 @@
     display: flex;
     @include xsmall{
       font-size: 12px;
+      margin-bottom: 10px;
     }
   }
 }
 
-.owner{
-  width: 30%;
+.ownerAndRatings{
   display: flex;
-  align-content: center;
-  justify-content: flex-end;
+  flex-direction: column;
+  justify-content: space-between;
   @include xsmall{
-    width: 100%;
-    display: flex;
-    justify-content: flex-end;
-    position: absolute;
-    bottom: 0px;
+    flex-direction: row-reverse;
   }
+}
+
+.owner{
+  display: flex;
   &__name{
     font-size: 18px;
     display: flex;
     align-items: center;
-    justify-content: flex-end;
-    width: 100px;
+    text-align: right;
     margin-right: 10px;
     @include xsmall{
       font-size: 12px;
+      width: 55px;
     }
   }
   &__picture{
-    width: 100px;
-    height: 100px;
+    width: 90px;
+    height: 90px;
     border-radius: 50%;
     @include xsmall{
       width: 50px;
@@ -79,8 +84,15 @@
 }
 
 .rating{
-  margin: 16px 0px;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+  @include xsmall{
+    align-items: center;
+  }
   & .star{
+    width: 25px;
+    height: 25px;
     @include xsmall{
       width: 12px;
       height: 12px;
@@ -100,6 +112,7 @@
     @include xsmall{
       width: 100%;
       margin-bottom: 20px;
+      font-size: 13px;
     }
   }
 }

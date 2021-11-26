@@ -15,5 +15,8 @@
   &__logo{
     width: 120px;
     margin: auto;
+    @include xsmall{
+      width: 90px;
+    }
   }
 }

@@ -20,7 +20,7 @@ ReactDOM.render(
               <Route exact path="/" component={Home} />
               <Route path="/about" component={About} />
               <Route path="/:id" component={Accommodation}/>
-              <Route path="*" component={Error}/>
+              <Route path="/*" component={Error}/>
           </Switch>
           <Footer/>
       </Router>

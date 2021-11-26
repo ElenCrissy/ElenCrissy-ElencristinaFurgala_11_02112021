@@ -54,13 +54,13 @@ class Accommodation extends Component{
     getStars = (rating) => {
         let starsArray = []
         for(let i=0; i <= rating-1; i++) {
-            const redStar = (<img src={star} className="star" alt="" key={i}/>)
+            const redStar = (<img src={star} className="star" alt="" key={`1-${i}`}/>)
             starsArray.push(redStar)
         }
         if(rating < 5){
             const emptyStar = 5-rating;
             for(let j=0; j < emptyStar; j++) {
-                const greyStarDOM = (<img src={greyStar} className="star" alt="" key={j}/>)
+                const greyStarDOM = (<img src={greyStar} className="star" alt="" key={`2-${j}`}/>)
                 starsArray.push(greyStarDOM)
             }
         }
@@ -84,13 +84,15 @@ class Accommodation extends Component{
                                 <div className="info__location">{accommodations.location}</div>
                                 <div className="info__tags">{tags}</div>
                             </div>
-                            {host ?
-                                (<div className="owner">
-                                    <div className="owner__name">{host.name}</div>
-                                    <img className="owner__picture" src={host.picture} alt=""/>
-                                </div>)
-                                : null}
-                            <div className="rating">{rating ? this.getStars(rating) : null}</div>
+                            <div className="ownerAndRatings">
+                                {host ?
+                                    (<div className="owner">
+                                        <div className="owner__name">{host.name}</div>
+                                        <img className="owner__picture" src={host.picture} alt=""/>
+                                    </div>)
+                                    : null}
+                                <div className="rating">{rating ? this.getStars(rating) : null}</div>
+                            </div>
                         </div>
                     </div>
                     <div className="detail-blocks">
