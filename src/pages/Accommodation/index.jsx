@@ -2,7 +2,8 @@ import {Component} from "react";
 import {withRouter} from 'react-router-dom';
 import Gallery from "../../components/Gallery";
 import Tag from "../../components/Tag";
-import starImage from "../../assets/star.png";
+import star from "../../assets/star.png";
+import emptyStar from "../../assets/emptystar.png";
 import DetailBlock from "../../components/DetailBlock";
 import "../../style/layout/accommodation.scss";
 
@@ -51,10 +52,21 @@ class Accommodation extends Component{
     }
 
     getStars = (rating) => {
-        for (let i = 0; i <= rating; i = i+1) {
-            console.log(rating)
-            return (<img src={starImage} className="tagsAndRating__rating" alt="" key={i}/>)
+        let starsArray = []
+        for(let i=0; i <= rating-1; i++) {
+            const redStar = (<img src={star} className="tagsAndRating__rating" alt="" key={i}/>)
+            starsArray.push(redStar)
         }
+        if(rating < 4){
+            const hello = 4-rating;
+            for(let j=0; j <= hello; j++) {
+                const greyStar = (<img src={emptyStar} className="tagsAndRating__rating" alt="" key={j}/>)
+                starsArray.push(greyStar)
+            }
+        } else if(rating === 5 || rating > 5){
+            return
+        }
+        return starsArray
     }
 
     render() {
