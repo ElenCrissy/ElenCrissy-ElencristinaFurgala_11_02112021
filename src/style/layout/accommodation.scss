@@ -7,10 +7,18 @@
     display: flex;
     flex-direction: column;
     margin-bottom: 30px;
+    @include xsmall{
+      margin-bottom: 0px;
+    }
     & .info-details{
       display: flex;
       margin-bottom: 20px;
       align-items: center;
+      @include xsmall{
+        flex-direction: column;
+        align-items: normal;
+        position: relative;
+      }
     }
   }
 }
@@ -23,6 +31,16 @@
     font-weight: normal;
     margin-top: 0;
     margin-bottom: 0;
+    @include xsmall{
+      font-size: 20px;
+    }
+  }
+  &__tags{
+    margin-top: 10PX;
+    display: flex;
+    @include xsmall{
+      font-size: 12px;
+    }
   }
 }
 
@@ -31,35 +49,57 @@
   display: flex;
   align-content: center;
   justify-content: flex-end;
+  @include xsmall{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    position: absolute;
+    bottom: 0px;
+  }
   &__name{
     font-size: 18px;
     display: flex;
     align-items: center;
-    text-align: end;
+    justify-content: flex-end;
     width: 100px;
+    margin-right: 10px;
+    @include xsmall{
+      font-size: 12px;
+    }
   }
   &__picture{
     width: 100px;
     height: 100px;
-    padding: 10px 0 10px 10px;
     border-radius: 50%;
+    @include xsmall{
+      width: 50px;
+      height: 50px;
+    }
   }
 }
 
-.tagsAndRating{
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-  &__tags{
-    display: flex;
+.rating{
+  margin: 16px 0px;
+  & .star{
+    @include xsmall{
+      width: 12px;
+      height: 12px;
+    }
   }
 }
 
 .detail-blocks{
   display: flex;
   justify-content: space-between;
+  @include xsmall{
+    flex-direction: column;
+  }
   & .detail-block{
     width: 48%;
     margin: 0px;
+    @include xsmall{
+      width: 100%;
+      margin-bottom: 20px;
+    }
   }
 }

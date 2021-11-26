@@ -3,7 +3,7 @@ import {withRouter} from 'react-router-dom';
 import Gallery from "../../components/Gallery";
 import Tag from "../../components/Tag";
 import star from "../../assets/star.png";
-import emptyStar from "../../assets/emptystar.png";
+import greyStar from "../../assets/emptystar.png";
 import DetailBlock from "../../components/DetailBlock";
 import "../../style/layout/accommodation.scss";
 
@@ -54,17 +54,15 @@ class Accommodation extends Component{
     getStars = (rating) => {
         let starsArray = []
         for(let i=0; i <= rating-1; i++) {
-            const redStar = (<img src={star} className="tagsAndRating__rating" alt="" key={i}/>)
+            const redStar = (<img src={star} className="star" alt="" key={i}/>)
             starsArray.push(redStar)
         }
-        if(rating < 4){
-            const hello = 4-rating;
-            for(let j=0; j <= hello; j++) {
-                const greyStar = (<img src={emptyStar} className="tagsAndRating__rating" alt="" key={j}/>)
-                starsArray.push(greyStar)
+        if(rating < 5){
+            const emptyStar = 5-rating;
+            for(let j=0; j < emptyStar; j++) {
+                const greyStarDOM = (<img src={greyStar} className="star" alt="" key={j}/>)
+                starsArray.push(greyStarDOM)
             }
-        } else if(rating === 5 || rating > 5){
-            return
         }
         return starsArray
     }
@@ -84,6 +82,7 @@ class Accommodation extends Component{
                             <div className="info">
                                 <h1 className="info__title">{accommodations.title}</h1>
                                 <div className="info__location">{accommodations.location}</div>
+                                <div className="info__tags">{tags}</div>
                             </div>
                             {host ?
                                 (<div className="owner">
@@ -91,11 +90,7 @@ class Accommodation extends Component{
                                     <img className="owner__picture" src={host.picture} alt=""/>
                                 </div>)
                                 : null}
-                        </div>
-
-                        <div className="tagsAndRating">
-                            <div className="tagsAndRating__tags">{tags}</div>
-                            <div className="tagsAndRating__rating">{rating ? this.getStars(rating) : null}</div>
+                            <div className="rating">{rating ? this.getStars(rating) : null}</div>
                         </div>
                     </div>
                     <div className="detail-blocks">

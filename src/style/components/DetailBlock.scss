@@ -9,6 +9,9 @@
     padding: 10px;
     background-color: $color-primary;
     color: white;
+    @include xsmall{
+      font-size: 13px;
+    }
   }
   & .block-content{
     padding: 20px;

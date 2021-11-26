@@ -11,10 +11,13 @@
     display: flex;
     justify-content: center;
     & ul{
+      width: 100%;
+      margin: 0px;
       padding-inline-start: 0px;
       list-style-type: none;
       display: flex;
       flex-wrap: wrap;
+      justify-content: space-between;
     }
   }
 }

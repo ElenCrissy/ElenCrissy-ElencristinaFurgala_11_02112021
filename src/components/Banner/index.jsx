@@ -7,7 +7,9 @@ class Banner extends Component {
         return(
             <div className="banner">
                 <img src={coast} className="banner__img" alt="banner_img_coast" />
-                <p className="banner__slogan">Chez vous, partout et ailleurs</p>
+                <div className="banner__slogan">
+                    <p className="slogan">Chez vous, partout et ailleurs</p>
+                </div>
             </div>
         )
     }
