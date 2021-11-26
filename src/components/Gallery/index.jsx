@@ -16,9 +16,7 @@ class Gallery extends Component{
     createPicturesDOM = (picture, index) => {
         if(picture) {
             return (
-                <div className={index === this.state.current ? 'active' : 'hidden'} key={index}>
-                    {index === this.state.current && (<img src={picture} alt=""/>)}
-                </div>
+                index === this.state.current && (<img src={picture} alt=""/>)
             )
         }
     }

@@ -50,16 +50,11 @@ class Accommodation extends Component{
         }
     }
 
-    //help
     getStars = (rating) => {
-        let starsArray = [];
-        starsArray.length = rating;
-        console.log(starsArray)
-        // for (let i = 0; i < rating; i++) {
-        //     starsArray.map(index => (
-        //         <img src={starImage} className="tagsAndRating__rating" alt="" key={index}/>
-        //     ))
-        // }
+        for (let i = 0; i <= rating; i = i+1) {
+            console.log(rating)
+            return (<img src={starImage} className="tagsAndRating__rating" alt="" key={i}/>)
+        }
     }
 
     render() {
