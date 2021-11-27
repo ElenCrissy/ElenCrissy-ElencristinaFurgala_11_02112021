@@ -6,12 +6,13 @@ import star from "../../assets/star.png";
 import greyStar from "../../assets/emptystar.png";
 import DetailBlock from "../../components/DetailBlock";
 import "../../style/layout/accommodation.scss";
+import Error from "../Error";
 
 class Accommodation extends Component{
     constructor(props) {
         super(props)
         this.state = {
-            accommodations : [],
+            accommodation : undefined,
         }
     }
 
@@ -21,10 +22,15 @@ class Accommodation extends Component{
             .then((response) => response.json())
             .then((data) => {
                 const accommodationFromId = this.getAccommodationFromId(id, data)
-                this.setState({ accommodations : accommodationFromId })
+                if(accommodationFromId === undefined) {
+                    this.setState({accommodation : null})
+                    return accommodationFromId
+                }
+                this.setState({ accommodation : accommodationFromId })
             })
             .catch(error => {
                 console.log(`Fetch problem: ${error}`)
+                this.setState({accommodation : null})
             });
     }
 
@@ -68,20 +74,23 @@ class Accommodation extends Component{
     }
 
     render() {
-        const { accommodations } = this.state;
-        if(this.state){
-            const tags = this.getTags(accommodations.tags, accommodations)
-            const host = accommodations.host
-            const rating = accommodations.rating
+        const { accommodation } = this.state;
+        if(accommodation === null) {
+            return <Error/>
+        }
+        if(accommodation !== undefined && accommodation !== null){
+            const tags = this.getTags(accommodation.tags, accommodation)
+            const host = accommodation.host
+            const rating = accommodation.rating
 
             return (
                 <section className="accommodation">
-                    <Gallery pictures={accommodations.pictures}/>
+                    <Gallery pictures={accommodation.pictures}/>
                     <div className="info-accommodation">
                         <div className="info-details">
                             <div className="info">
-                                <h1 className="info__title">{accommodations.title}</h1>
-                                <div className="info__location">{accommodations.location}</div>
+                                <h1 className="info__title">{accommodation.title}</h1>
+                                <div className="info__location">{accommodation.location}</div>
                                 <div className="info__tags">{tags}</div>
                             </div>
                             <div className="ownerAndRatings">
@@ -96,28 +105,25 @@ class Accommodation extends Component{
                         </div>
                     </div>
                     <div className="detail-blocks">
-                        {accommodations.description ?
+                        {accommodation.description ?
                             (<DetailBlock
                                 class="accommodation-block"
                                 blockName="description"
-                                blockContent={accommodations.description}
+                                blockContent={accommodation.description}
                             />)
                             : null}
-                        {accommodations.equipments ?
+                        {accommodation.equipments ?
                             (<DetailBlock
                                 class="accommodation-block"
                                 blockName="equipements"
-                                blockContent={accommodations.equipments}
+                                blockContent={accommodation.equipments}
                             />)
                             : null}
                     </div>
                 </section>
             )
-        } else {
-            return null
         }
-
-
+        return null
     }
 }
 
