@@ -9,13 +9,15 @@ import About from "./pages/About";
 import Accommodation from "./pages/Accommodation";
 import Error from "./pages/Error";
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import {withRouter} from "react-router-dom";
 
 
+const HeaderWithRouter = withRouter(Header);
 
 ReactDOM.render(
   <React.StrictMode>
       <Router>
-          <Header/>
+          <HeaderWithRouter/>
           <Switch>
               <Route exact path="/" component={Home} />
               <Route path="/about" component={About} />
