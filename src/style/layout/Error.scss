@@ -6,13 +6,23 @@
   &__number{
     font-weight: bold;
     font-size: 250px;
+    @include small{
+      font-size: 96px;
+    }
     margin: auto
   }
   &__message{
     font-size: 30px;
+    @include small{
+      font-size: 18px;
+      margin-bottom: 100px;
+    }
   }
   &__backHome{
     font-size: 18px;
     text-decoration: underline;
+    @include small{
+      font-size: 14px;
+    }
   }
 }

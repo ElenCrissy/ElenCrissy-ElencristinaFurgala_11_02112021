@@ -19,4 +19,7 @@
       width: 90px;
     }
   }
+  @include small{
+    margin-top: 100px;
+  }
 }

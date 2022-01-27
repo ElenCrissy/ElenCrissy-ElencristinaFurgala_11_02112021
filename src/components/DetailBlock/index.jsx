@@ -38,18 +38,23 @@ class DetailBlock extends Component{
 
         return (
             <section className="detail-block">
-                <div className="block-name" onClick={this.state.isActive ? this.close : this.open}>{blockNameUpperCased}</div>
+                <div className="block-name"
+                     onClick={this.state.isActive ? this.close : this.open}>
+                    {blockNameUpperCased}
+                </div>
                 {this.state.isActive ?
                         <div className="block-content">
                             {Array.isArray(blockContent) ? this.getEquipments(blockContent)
-                                : this.props.blockContent}</div>
-                                : null }
+                                : this.props.blockContent
+                            }</div>
+                    : null
+                }
                 {this.state.isActive ?
                         <img src={arrow} alt="" className="arrow arrow--up" /> :
-                        <img src={arrow} alt="" className="arrow arrow--down" />}
+                        <img src={arrow} alt="" className="arrow arrow--down" />
+                }
             </section>
         )
-
     }
 }
 
