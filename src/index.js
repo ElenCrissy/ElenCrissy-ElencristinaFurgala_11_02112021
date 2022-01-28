@@ -2,31 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.scss';
 import reportWebVitals from './reportWebVitals';
-import Header from "./components/Header";
-import Home from "./pages/Home";
-import Footer from "./components/Footer";
-import About from "./pages/About";
-import Accommodation from "./pages/Accommodation";
-import Error from "./pages/Error";
-import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
-import {withRouter} from "react-router-dom";
-
-
-const HeaderWithRouter = withRouter(Header);
+import App from "./App";
 
 ReactDOM.render(
   <React.StrictMode>
-      <Router>
-          <HeaderWithRouter/>
-          <Switch>
-              <Route exact path="/" component={Home} />
-              <Route path="/about" component={About} />
-              <Route path="/accommodation/:id" component={Accommodation}/>
-              <Route path="/*" component={Error}/>
-          </Switch>
-          <Footer/>
-      </Router>
-
+      <App/>
   </React.StrictMode>,
   document.getElementById('root')
 );

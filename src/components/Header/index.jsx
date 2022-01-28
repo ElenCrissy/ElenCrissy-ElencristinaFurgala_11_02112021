@@ -1,8 +1,7 @@
 import logo from '../../assets/logo.svg';
 import {Component} from "react";
 import '../../style/components/Header.scss';
-import { Link } from 'react-router-dom';
-
+// import { Link } from 'react-router-dom';
 
 class Header extends Component {
     render() {
@@ -11,13 +10,17 @@ class Header extends Component {
                 <header className="header">
                     <img src={logo} className="header-logo" alt="logo" />
                     <nav className="header-nav">
-                        {this.props.location.pathname === "/" ?
-                            <Link to="/" className="nav__link_accueil" style={{textDecoration: "underline"}}>Accueil</Link> :
-                            <Link to="/" className="nav__link_accueil">Accueil</Link>
+                        {window.location.pathname === "/" ?
+                            // <Link to="/" className="nav__link_accueil" style={{textDecoration: "underline"}}>Accueil</Link> :
+                            // <Link to="/" className="nav__link_accueil">Accueil</Link>
+                            <a href="/" className="nav__link_accueil" style={{textDecoration: "underline"}}>Accueil</a> :
+                            <a href="/" className="nav__link_accueil">Accueil</a>
                         }
-                        {this.props.location.pathname === "/about" ?
-                            <Link to="/about" className="nav__link_apropos" style={{textDecoration: "underline"}}>A propos</Link> :
-                            <Link to="/about" className="nav__link_apropos">A propos</Link>
+                        {window.location.pathname === "/about" ?
+                            // <Link to="/about" className="nav__link_apropos" style={{textDecoration: "underline"}}>A propos</Link> :
+                            // <Link to="/about" className="nav__link_apropos">A propos</Link>
+                            <a href="/about" className="nav__link_apropos" style={{textDecoration: "underline"}}>A propos</a> :
+                            <a href="/about" className="nav__link_apropos">A propos</a>
                         }
                     </nav>
                 </header>
